@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      body {
+        font-family: cursive;
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 0 20px;
+        background-color: rgb(61, 194, 236);
+        font-size: larger;
+      }
+
+      #registrationForm {
+        margin: auto;
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 30px;
+        background-color: rgb(255, 244, 85);
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 16px;
+        box-sizing: border-box;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px 15px;
+        background-color: rgb(255, 143, 0);
+        color: black;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 30px;
+      }
+
+      button:hover {
+        background-color: rgb(58, 190, 249);
+        font-weight: bold;
+      }
+
+      .validation-message {
+        color: rgb(255, 219, 0);
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 0.9em;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="" id="registrationForm">
+      <label for="firstName">First Name: </label>
+      <input
+        type="text"
+        id="firstName"
+        name="firstName"
+        placeholder="Your First Name"
+        required
+      />
+
+      <label for="lastName">Last name: </label>
+      <input
+        type="text"
+        id="lastName"
+        name="lastName"
+        placeholder="Your Last name"
+        required
+      />
+
+      <label for="email">Email Address: </label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="example@gmail.com"
+        required
+      />
+
+      <label for="password">password(min 8 Characters)</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+        minlength="8"
+      />
+
+      <div class="validation-message" id="passwordMessage"></div>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      var passwordInput = document.getElementById("password");
+      var passwordMessage = document.getElementById("passwordMessage");
+
+      passwordInput.addEventListener('input', function(){
+          var password = this.value;
+          var validityMessage = '';
+
+          if(!password.match(/[a-z]/)){
+              validityMessage += "Include atleast one lower case letter";
+          }
+          if(!password.match(/[A-Z]/)){
+              validityMessage += "Include atleast one upper case letter";
+          }
+
+          if(!password.match(/[0-9]/)){
+              validityMessage += "Include atleast one Number";
+          }
+
+          if(!password.match(/[\W_]/)){
+              validityMessage += "Include atleast one special Character";
+          }
+
+          if(password.length < 8){
+              validityMessage += "Password must be atleast 8 Character long";
+          }
+
+          document.getElementById('registrationForm').addEventListener('submit',function(event){
+              var password = passwordInput.value;
+              var validityMessage ='';
+              if(!password.match(/[a-z]/)||!password.match(/[A-Z]/)||!password.match(/[0-9]/)||!password.match(/[\W_]/)|| password
+          })
+      })
+    </script>
+  </body>
+</html>
